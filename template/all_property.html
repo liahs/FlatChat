@@ -1,0 +1,53 @@
+{% extends "header.html" %}
+{% load static %}
+{% block head %}
+    <style>
+        td,th{
+            width: 30%;
+        }
+        .hover{
+            width: 100%;
+            height: 100%;
+        }
+        .hover:hover{box-shadow: 0px 0px 10px black;
+        transform: scale(1.1);
+        transition: 1.3s;
+                }
+    a:hover{
+text-decoration:none;
+                }
+    </style>
+{% endblock %}
+{% block myblock %}
+    <div class="container-fluid" style="margin-top: 70px; background: url('/static/images/c3.jpeg'); background-size: 100% 100%;">
+        <div class="row py-5" style="background: rgba(0,0,0,0.5);">
+            <div class="col-md-12 py-5 my-5 text-white text-center font-weight-bold text-uppercase">
+                {% if abcd %}
+                <h1>Total ({{property|length}}) Result Match</h1>
+                {% else %}
+                <h1>All Properties ({{property|length}})</h1>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row py-4">
+          {% for i in property %}
+                <div class="col-md-4 p-4">
+                        <a style="color: darkolivegreen" href="{% url 'property_detail' %}?pid={{i.id}}">
+                    <div class="border border-secondary hover rounded p-1">
+                        <img src="/media/{{i.property_images}}" height="200" width="100%" alt="">
+                        <h3>
+                        {{i.property_name}}
+                        </h3>
+                        <h4>
+                            <span class="btn btn-outline-danger"><del>&#8377; {{i.property_price}}</del></span>
+                            <span class='btn btn-outline-success'>&#8377; {{i.sale_price}}</span>
+                        </h4>
+                    </div>
+                </a>
+                </div>
+          {% endfor %}
+        </div>
+    </div>
+{% endblock %}

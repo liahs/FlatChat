@@ -1,0 +1,76 @@
+{% extends "header.html" %}
+{% block head %}
+ 
+{% endblock %}
+{% block myblock %}
+{% if user.is_superuser %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 px-0 mt-4">
+                <div class="jumbotron text-center">
+                    <h1 class="alert alert-danger">Sorry {{user.username}} You Are Not Allowed Here</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+{% else %}
+<div class="container-fluid">
+    <div class="row">
+        <!-- Lest side Menu -->
+        <div class="col-md-2 bg-dark py-5">
+            <nav class="navbar navbar-dark">
+                <a href="" class="navbar-brand mt-3">My Dashboard
+                    <p>
+                        {% if  data.profile_picture %}
+                        <img src="/media/{{data.profile_picture}}" class="rounded-pill" height="100px" width="100px">
+                        {% else %}
+                        <img src="/static/images/images.png" class="rounded-pill" height="100px" width="100px">
+                        {% endif %}
+                    </p>
+                    <p>{{user.username}}</p>
+                </a>
+                
+                <ul class="navbar-nav">
+                    <li class="nav-item">                
+                        <a href="{% url 'customer_dashboard' %}" class="nav-link"><i class="fas fa-user text-white"></i> View Profile</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="{% url 'edit_profile' %}" class="nav-link"><i class="fas fa-user-edit text-white"></i> Edit Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'change_password' %}" class="nav-link"><i class="fas fa-key text-white"></i> Change Password</a>
+                    </li>
+                    
+                    {% if user.is_staff %}
+                    <li class="nav-item">
+                        <a href="{% url 'add_property_view' %}" class="nav-link"><i class="fas fa-plus-square text-white"></i> Add Property</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'my_property' %}" class="nav-link"><i class="fas fa-home text-white"></i> My Property</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'sendemail' %}" class="nav-link"><i class="fas fa-envelope-square text-white"></i> Send Email</a>
+                    </li>
+                    {% else %}
+
+                    <li class="nav-item">
+                            <a href="{% url 'books' %}" class="nav-link"><i class="fas fa-envelope-square text-white"></i> Booked</a>
+                    </li>
+
+                    {% endif %}
+                    <li class="nav-item">
+                        <a href="{% url 'user_logout' %}" class="nav-link"><i class="fas fa-sign-out-alt text-white"></i> Logout</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <!-- right side menu -->
+        <div class="col-md-10 px-0">
+            {% block dashboard %}
+
+            {% endblock %}
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

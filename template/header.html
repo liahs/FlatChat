@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'fontawesome/css/all.min.css'%}">
+    <script src="{% static 'jquery.js'%}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js'%}"></script>
+    <style>
+        .top {
+            background-color: rgb(28, 51, 100);
+        }
+
+        #top-icon1,
+        #top-icon2 {
+            color: rgb(236, 130, 9);
+        }
+
+        #top-icon3:hover {
+            color: rgb(236, 130, 9);
+        }
+
+        #top-icon4:hover {
+            color: rgb(236, 130, 9);
+        }
+
+        #top-icon5:hover {
+            color: rgb(236, 130, 9);
+        }
+
+        select {
+            border: 2px solid rgb(189, 104, 26);
+        }
+
+        label {
+            color: rgb(236, 130, 9)
+        }
+
+        .one {
+            border: 2px solid rgb(236, 130, 9);
+            color: white
+        }
+
+
+        /* .foot{background-color: rgb(109, 219, 238);} */
+        .foot {
+            background: url("{% static 'images/footer-img.JPEG'%}");
+            background-size: 100% 100%;
+        }
+
+        .footrow {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        #foot-icon1:hover {
+            background-color: rgb(236, 130, 9);
+        }
+
+        #foot-icon2:hover {
+            background-color: rgb(236, 130, 9);
+        }
+
+        #foot-icon3:hover {
+            background-color: rgb(236, 130, 9);
+        }
+
+        a:hover {
+            color: rgb(236, 130, 9);
+        }
+
+        a {
+            color: white;
+        }
+
+        .box:hover {
+            height: 100%;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            text-align: justify;
+        }
+    </style>
+    {% block head %}
+
+    {% endblock %}
+</head>
+
+<body>
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-md-12 px-0">
+                <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" id="nav-top">
+                    <a class="navbar-brand" href="{% url 'home' %}"
+                        style="font-size: 24px;font-weight:bold;">FlatChat<span
+                            style="font-size: 30px;color: rgb(226, 123, 27);">.</span></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                        <ul class="navbar-nav mx-auto">
+                            <li class="nav-item px-2">
+                                <a href="{% url 'home' %}" class="nav-link text-white ">Home</a>
+                            </li>
+                            <li class="nav-item dropdown px-2">
+                                <a class="nav-link dropdown-toggle text-white" data-toggle="dropdown" href="">Pages</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{% url 'aboutus' %}">About</a>
+                                    <a class="dropdown-item" href="">Elements</a>
+                                </div>
+                            </li>
+                      
+                            <li class="nav-item px-2">
+                                <a href="{% url 'contact' %}" class="nav-link text-white">Contact</a>
+                            </li>
+                            <li class="nav-item px-2">
+                                <a href="{% url 'all_property' %}" class="nav-link text-white">All Property</a>
+                            </li>
+                            <li class="nav-item dropdown px-2">
+                                <a href="" class="nav-link dropdown-toggle text-white"
+                                    data-toggle="dropdown">category</a>
+                                <div class="dropdown-menu">
+                                    <a href="{% url 'category_type'%}" class="dropdown-item">All categories</a>
+                                    {% for c in category %}
+                                    <a href="{% url 'all_property' %}?cat={{c.id}}"
+                                        class="dropdown-item">{{c.cat_name}}</a>
+
+                                    {% endfor %}
+                                </div>
+                            </li>
+                            {% if user.is_authenticated %}
+                            <li class="nav-item px-2">
+                                <a href="{% url 'user_logout' %}" class="nav-link text-white">Log out</a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                        <ul class="navbar-nav ml-auto">
+                            {% if user.is_authenticated %}
+                            <li class="nav-item">
+                                <form class="form-inline my-2 my-lg-0">
+
+                                        <a href="{% url 'customer_dashboard'%}"
+                                        class="nav-link text-light">
+                                    {% if data.profile_picture %}
+                                    <img src="/media/{{data.profile_picture}}"
+                                        style="height: 50px; width: 50px; border-radius: 50%;">
+                                    {% else %}
+                                    <img src="{% static 'images/images.png' %}"
+                                        style="height: 50px; width: 50px; border-radius: 50%;">
+                                    {% endif %}
+                                    {{user.username}}
+                                </a>
+                                </form>
+
+                            </li>
+                            {% else %}
+                            <li class="nav-item">
+                                <a href="{% url 'signin' %}" class="btn btn-outline-light">Sign In</a>
+                            </li>
+                            <li class="nav-item ml-3">
+                                <a href="{% url 'signup' %}" class="btn btn-outline-light">Sign Up</a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                        <!-- <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search">
+                        <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
+                      </form> -->
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    {% block myblock %}
+
+    {% endblock %}
+
+    <div class="container-fluid foot text-white">
+        <div class="row  pb-5 footrow">
+            <div class="col-md-4">
+                <a href="{% url 'home' %}" class="btn p-5 font-weight-bold text-white"
+                    style="font-size: 30px;">FlatChat<span class="text-warning">.</span></a><br>
+                <a href="#" class="badge badge-Warning ml-5 ">conbusi@support.com</a>
+                <p class="ml-5 mt-2 text-white">+10 873 672 6782</p>
+                <p class="ml-5 text-white">600/D, Green road, NewYork</p>
+                <i class="fab fa-facebook-f ml-5 p-3 rounded-circle" id="foot-icon1"></i>
+                <i class="fab fa-twitter p-3 rounded-circle" id="foot-icon2"></i>
+                <i class="fab fa-instagram p-3 rounded-circle" id="foot-icon3"></i>
+            </div>
+
+       
+
+            <div class="col-md-4">
+                <h3 class="p-5">Useful Links</h3>
+                <ul class="ml-2 mt-3 pt-2" type="none">
+                    <li> <a class="a1" style="text-decoration:none;" href="{% url 'aboutus' %}">About</a></li>
+                    <li><a class="a1" style="text-decoration:none;" href="#">Blog</a></li>
+                    <li><a class="a1" style="text-decoration:none;" href="{% url 'contact' %}">Contact</a></li>
+                    <li><a class="a1" style="text-decoration:none;" href="#">Appointment</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-4">
+                <h3 class="p-5">Subscribe</h3>
+                <div class="input-group">
+                    <input type="text" class="form-control rounded-pill" placeholder="enter your mail">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default bg-warning rounded-pill" type="submit"
+                            style="position: relative;right: 92px;">
+                            Subscribe
+                        </button>
+                    </span>
+                </div>
+                <p class="text-white mt-3">Subscribe email to get weekly posts.</p>
+            </div>
+        </div>
+        <div class="row pt-5 footrow">
+            <div class="col-md-12">
+                <hr>
+                <p class="text-center text-white">Copyright ©2020 All rights reserved | &hearts; by
+                    <span><a class="text-warning" href="{% url 'contact' %}">Shailen Chhetri</a></span> </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

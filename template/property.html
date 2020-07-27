@@ -1,0 +1,250 @@
+{% extends "header.html" %}
+{% load static %}
+{% block head %}
+    <style>
+        .bg-img{
+            background: url("{% static 'images/header.JPEG' %}"); height: 700px; background-size: cover;
+        }
+        .trans{
+            background: rgba(10, 8, 69,0.5);
+        }
+        select{
+            border: 2px solid rgb(189, 104, 26);
+        }
+        .one{
+            border: 2px solid rgb(236,130,9);color:white
+        }
+        label{
+            color:rgb(236, 130, 9)
+        }
+        .img1, .img2, .img3, .img4, .img5, .img6{
+            height: 250px;  
+        }
+        .img1{
+            background: url("{% static 'images/img1.jpeg' %}"); background-size: cover;
+        }
+        .img2{
+            background: url("{% static 'images/img2.jpg' %}"); background-size: cover;
+        }
+        .img3{
+            background: url("{% static 'images/img3.jpeg' %}"); background-size: cover;
+        }
+        .img4{
+            background: url("{% static 'images/img4.jpg' %}"); background-size: cover;  
+        }
+        .img5{
+            background: url("{% static 'images/img5.jpeg' %}"); background-size: cover;  
+        }
+        .img6{
+            background: url("{% static 'images/img6.jpg ' %}"); background-size: cover;  
+        }
+        .img1:hover{
+            transform: scale(1.1); transition: 1s;
+        }
+        .img2:hover{
+            transform: scale(1.1); transition: 1s;
+        }
+        .img3:hover{
+            transform: scale(1.1); transition: 1s;
+        }
+        .img4:hover{
+            transform: scale(1.1); transition: 1s;
+        }
+        .img5:hover{
+            transform: scale(1.1); transition: 1s;
+        }
+        .img6:hover{
+            transform: scale(1.1); transition: 1s;
+        }
+        .main{
+            overflow: hidden;
+        }
+        small{
+            color: gray;
+        }
+        .mid2-img{
+            background: url("{% static 'images/header.JPEG' %}"); background-size: cover;
+        }
+    </style>
+{% endblock %}
+
+{% block myblock %}
+<section>
+    <div class="container-fluid">
+        <div class="row bg-img">
+            <div class="col-md-12 text-center text-white trans">
+                <h1 style="font-size: 60px; margin-top:120px;">Search Property</h1>
+            </div>
+            <div class="col-md-12 trans">
+            <div style="background-color:rgba(10, 17, 48, 0.5);">
+                <div class="col-md-12">
+                    <form action="">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="">Location</label>
+                                    <select class="form-control one bg-transparent">
+                                        <option>NewYork</option>
+                                        <option>India</option>
+                                        <option>Bangladesh</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="">Property</label>
+                                    <select class="form-control one bg-transparent">
+                                    <option>Apartment</option>
+                                    <option>Apartment</option>
+                                    <option>Apartment</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="">Bed Room</label>
+                                    <select id="" class="form-control one bg-transparent ">
+                                        <option>01</option>
+                                        <option>02</option>
+                                        <option>03</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="">Bath Room</label>
+                                    <select id="" class="form-control one bg-transparent">
+                                        <option>01</option>
+                                        <option>02</option>
+                                        <option>03</option>
+                                    </select>
+                                </div>
+                            <button class="btn btn-block btn-lg text-white my-4"><i class="fas fa-search bg-warning px-5 py-2 rounded"></i></button>  
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2 class="my-5">240 Properties Found</h2>
+            </div>
+            <div class="col-md-4">
+                <div class="card my-3 shadow shadow-lg">
+                    <div class="main">
+                    <div class="card-header img1">
+                        <button class="btn btn-secondary rounded-pill mt-3">For Sale</button>
+                    </div>
+                    </div>
+                    <div class="card-body">
+                        <h5>Comfortable Apartment in Palace</h5>
+                        <small><span><i class="fas fa-map-marker-alt"></i></span> Popular Properties</small><br>
+                        <button class="btn btn-success rounded-pill mt-3">From $20k</button>
+                    </div>
+                    <div class="card-footer">
+                        <em>1200 Sq. Ft. 2 Bedrooms 2 Bathrooms</em>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card my-3 shadow shadow-lg">
+                    <div class="main">
+                    <div class="card-header img2">
+                        <button class="btn btn-secondary rounded-pill mt-3">For Sale</button>
+                    </div>
+                    </div>
+                    <div class="card-body">
+                        <h5>Comfortable Apartment in Palace</h5>
+                        <small><span><i class="fas fa-map-marker-alt"></i></span> Popular Properties</small><br>
+                        <button class="btn btn-success rounded-pill mt-3">From $20k</button>
+                    </div>
+                    <div class="card-footer">
+                        <em>1200 Sq. Ft. 2 Bedrooms 2 Bathrooms</em>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card my-3 shadow shadow-lg">
+                    <div class="main">
+                    <div class="card-header img3">
+                        <button class="btn btn-secondary rounded-pill mt-3">For Rent</button>
+                    </div>
+                    </div>
+                    <div class="card-body">
+                        <h5>Comfortable Apartment in Palace</h5>
+                        <small><span><i class="fas fa-map-marker-alt"></i></span> Popular Properties</small><br>
+                        <button class="btn btn-success rounded-pill mt-3">From $20k</button>
+                    </div>
+                    <div class="card-footer">
+                        <em>1200 Sq. Ft. 2 Bedrooms 2 Bathrooms</em>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card my-3 shadow shadow-lg">
+                    <div class="main">
+                    <div class="card-header img4">
+                        <button class="btn btn-secondary rounded-pill mt-3">For Sale</button>
+                    </div>
+                    </div>
+                    <div class="card-body">
+                        <h5>Comfortable Apartment in Palace</h5>
+                        <small><span><i class="fas fa-map-marker-alt"></i></span> Popular Properties</small><br>
+                        <button class="btn btn-success rounded-pill mt-3">From $20k</button>
+                    </div>
+                    <div class="card-footer">
+                        <em>1200 Sq. Ft. 2 Bedrooms 2 Bathrooms</em>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card my-3 shadow shadow-lg">
+                    <div class="main">
+                    <div class="card-header img5">
+                        <button class="btn btn-secondary rounded-pill mt-3">For Rent</button>
+                    </div>
+                    </div>
+                    <div class="card-body">
+                        <h5>Comfortable Apartment in Palace</h5>
+                        <small><span><i class="fas fa-map-marker-alt"></i></span> Popular Properties</small><br>
+                        <button class="btn btn-success rounded-pill mt-3">From $20k</button>
+                    </div>
+                    <div class="card-footer">
+                        <em>1200 Sq. Ft. 2 Bedrooms 2 Bathrooms</em>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card my-3 shadow shadow-lg">
+                    <div class="main">
+                    <div class="card-header img6">
+                        <button class="btn btn-secondary rounded-pill mt-3">For Sale</button>
+                    </div>
+                    </div>
+                    <div class="card-body">
+                        <h5>Comfortable Apartment in Palace</h5>
+                        <small><span><i class="fas fa-map-marker-alt"></i></span> Popular Properties</small><br>
+                        <button class="btn btn-success rounded-pill mt-3">From $20k</button>
+                    </div>
+                    <div class="card-footer">
+                        <em>1200 Sq. Ft. 2 Bedrooms 2 Bathrooms</em>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 text-center">
+                <button class="btn btn-lg btn-outline-danger rounded-pill my-5">More Properties</button>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid mt-5 p-0">
+        <div class="row mid2-img trans">
+            <div class="col-md-6 text-white trans">
+                <h1 class="my-5 py-4 pl-3">Add your Propery for Sale</h1>
+            </div>
+            <div class="col-md-3 text-white text-center trans">
+                <h5 class="my-5 py-5">+10 637 367 4567</h5>
+            </div>
+            <div class="col-md-3 text-white text-center trans pt-5">
+                <button class="btn btn-outline-light rounded-pill my-5">Add Property</button>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

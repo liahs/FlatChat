@@ -1,0 +1,331 @@
+{% extends 'header.html' %}
+{% load static %}
+
+{% block head %}
+<style>
+    .tx {
+        border: 1px solid rgb(236, 130, 9);
+    }
+
+    .bg-img {
+        background: url("{% static 'images/header.jpeg'%}");
+        height: 700px;
+        background-size: cover;
+    }
+
+    .trans {
+        background: rgba(10, 8, 69, 0.5);
+    }
+
+    select {
+        border: 2px solid rgb(189, 104, 26);
+    }
+
+    .one {
+        border: 2px solid rgb(236, 130, 9);
+        color: white
+    }
+
+    label {
+        color: rgb(236, 130, 9)
+    }
+
+
+    .img1:hover {
+        transform: scale(1.1);
+        transition: 1s;
+    }
+
+    }
+
+    .main {
+        overflow: hidden;
+    }
+
+    small {
+        color: gray;
+    }
+
+    .mid1-img {
+        background: url("{% static 'images/contact.jpeg'%}");
+        height: 700px;
+        background-size: cover;
+    }
+
+    .mid2-img {
+        background: url("{% static 'images/header.jpeg'%}");
+        background-size: cover;
+    }
+
+    .trans1 {
+        background: rgba(10, 8, 69, 0.5);
+    }
+
+    .agent1 {
+        background: url("{% static 'images/agent1.jpg'%}");
+        height: 300px;
+        background-size: cover;
+    }
+
+    .agent2 {
+        background: url("{% static 'images/agent2.jpg'%}");
+        height: 300px;
+        background-size: cover;
+    }
+
+    .agent3 {
+        background: url("{% static 'images/agent3.png'%}");
+        height: 300px;
+        background-size: cover;
+    }
+
+    .agent4 {
+        background: url("{% static 'images/agent4.jpg'%}");
+        height: 300px;
+        background-size: cover;
+    }
+
+    .agent1:hover {
+        transform: scale(1.1);
+        transition: 1s;
+    }
+
+    .agent2:hover {
+        transform: scale(1.1);
+        transition: 1s;
+    }
+
+    .agent3:hover {
+        transform: scale(1.1);
+        transition: 1s;
+    }
+
+    .agent4:hover {
+        transform: scale(1.1);
+        transition: 1s;
+    }
+    #ac:hover{
+        text-decoration: none;
+    }
+</style>
+{% endblock %}
+</head>
+{% block myblock %}
+
+<section>
+    <div class="container-fluid">
+        <div class="row bg-img">
+            <div class="col-md-12 text-center text-white trans">
+                <h1 style="font-size: 50px; margin-top:120px;">Find your best Property here!</h1>
+                <h5 class="mt-5">Esteem spirit temper too say adieus who direct esteem.</h5>
+            </div>
+            <div class="col-md-12 trans">
+                <!-- </div>
+            <div class="row justify-content-center mb-5"> -->
+                <div style="background-color:rgba(10, 17, 48, 0.5);">
+                    <div class="col-md-12">
+                        <form action="{% url 'all_property' %}">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label for="">Location</label>
+                                        <input type="text" class="form-control text-light bg-transparent tx" name="cty"
+                                            placeholder="Search by City">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="">Property</label>
+                                        <input type="text" class="form-control text-light bg-transparent tx" name="qry"
+                                            placeholder="Search by Name/Category">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="">Bed Room</label>
+                                        <input type="number" class="form-control text-light bg-transparent tx" name=""
+                                            placeholder="number of bed">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="">Bath Room</label>
+                                        <input type="number" class="form-control text-light bg-transparent tx" name=""
+                                            placeholder="number of bathroom">
+                                    </div>
+                                    <button class="btn btn-block btn-lg text-white my-4"><i
+                                            class="fas fa-search bg-warning px-5 py-2 rounded"></i></button>
+                                </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Popluar Properties  -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1 class="my-5">Popular Properties</h1>
+            </div>
+            {% for i in prop|slice:":6" %}
+          
+            <div class="col-md-4 img1">
+                    <a id='ac' style="color: darkolivegreen;font-size: 12;"href="{% url 'property_detail' %}?pid={{i.id}}">
+                 <div class="card my-3 shadow shadow-lg">
+                    <div class="main">
+                        <div class="card-header"
+                            style=" background: url('/media/{{i.property_images}}'); height: 300px; background-size: cover;">
+                            <button class="btn btn-secondary rounded-pill mt-3">{{i.property_status}}</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p>
+                       {{i.property_name}}
+                    </p>
+                        <small><span><i class="fas fa-map-marker-alt"></i></span> {{i.city}}</small><br>
+                        <button class="btn btn-success rounded-pill mt-3"> <span style="color:red;"><del>&#8377;
+                                    {{i.property_price}}</del></span>
+                            <span>&#8377; {{i.sale_price}}</span></button>
+                    </div>
+                    <div class="card-footer">
+                        <em>{{i.area}} Sq. Ft. {{i.no_of_bedroom}} Bedrooms {{i.no_of_bathroom}} Bathrooms</em>
+                    </div>
+                </div>
+            </a>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-md-12 text-center">
+                <a href="{% url 'all_property' %}"><button class="my-4 pill rounded rounded-pill btn btn-outline-primary">Popular Properties</button></a>
+            </div>
+
+
+            <!-- Crausel  -->
+        <div class="container-fluid mt-5">
+            <div class="row"
+                style="background-image:url('{% static "images/laptop1.jpeg" %}'); background-size: 100% 100%;">
+                <div class="col-md-12 p-5">
+                    <div class="carousel slide" data-ride="carousel" id="mycar">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="col-md-12 px-0 text-center" style="margin-bottom: 100px;">
+                                    <h1 class="text-white"
+                                        style="margin-top: 30px; margin-bottom: 30px; font-size: 60px;"><i
+                                            class="fas fa-quote-right"></i></h1>
+                                    <p class="text-light mr-5 ml-5" style="font-size: 20px;">Lorem ipsum dolor, sit amet
+                                        consectetur adipisicing elit.
+                                        Enim quis atque ut quaerat dolore impedit, sapiente at modi eaque porro
+                                        recusandae,
+                                        natus omnis iste?Lorem ipsum dolor sit amet.natus omnis iste?Lorem ipsum dolor
+                                        sit amet.</p>
+                                    <img src="{% static 'images/carousel.jpg' %}" height="50px" width="50px"
+                                        style="border-radius: 50%;" alt="">
+                                    <h5 class="text-light mt-3">Robert Thomson</h5>
+                                    <p class="text-white">Business Owner</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="col-md-12 px-0 text-center" style="margin-bottom: 100px;">
+                                    <h1 class="text-white"
+                                        style="margin-top: 30px; margin-bottom: 30px; font-size: 60px;"><i
+                                            class="fas fa-quote-right"></i></h1>
+                                    <p class="text-light mr-5 ml-5" style="font-size: 20px;">Lorem ipsum dolor, sit amet
+                                        consectetur adipisicing elit.
+                                        Enim quis atque ut quaerat dolore impedit, sapiente at modi eaque porro
+                                        recusandae,
+                                        natus omnis iste?Lorem ipsum dolor sit amet.natus omnis iste?Lorem ipsum dolor
+                                        sit amet.</p>
+                                    <img src="{% static 'images/carousel.jpg' %}" height="50px" width="50px"
+                                        style="border-radius: 50%;" alt="">
+                                    <h5 class="text-light mt-3">Robert Thomson</h5>
+                                    <p class="text-white">Business Owner</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="col-md-12 px-0 text-center" style="margin-bottom: 100px;">
+                                    <h1 class="text-white"
+                                        style="margin-top: 30px; margin-bottom: 30px; font-size: 60px;"><i
+                                            class="fas fa-quote-right"></i></h1>
+                                    <p class="text-light mr-5 ml-5" style="font-size: 20px;">Lorem ipsum dolor, sit amet
+                                        consectetur adipisicing elit.
+                                        Enim quis atque ut quaerat dolore impedit, sapiente at modi eaque porro
+                                        recusandae,
+                                        natus omnis iste?Lorem ipsum dolor sit amet.natus omnis iste?Lorem ipsum dolor
+                                        sit amet.</p>
+                                    <img src="{% static 'images/carousel.jpg' %}" height="50px" width="50px"
+                                        style="border-radius: 50%;" alt="ImageNot found">
+                                    <h5 class="text-light mt-3">Robert Thomson</h5>
+                                    <p class="text-white">Business Owner</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#mycar" class="carousel-control-prev" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a href="#mycar" class="carousel-control-next" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h1 class="my-5 pb-4">Our Agents</h1>
+                </div>
+                <div class="col-md-3 text-center">
+                    <div class="main">
+                        <div class="card agent1"></div>
+                    </div>
+                    <h4 class="mt-3">Milani Mou</h4>
+                    <p class="text-secondary">(Business Agent)</p>
+                </div>
+                <div class="col-md-3 text-center">
+                    <div class="main">
+                        <div class="card agent2"></div>
+                    </div>
+                    <h4 class="mt-3">Lorem Ipsum</h4>
+                    <p class="text-secondary">(Business Agent)</p>
+                </div>
+                <div class="col-md-3 text-center">
+                    <div class="main">
+                        <div class="card agent3"></div>
+                    </div>
+                    <h4 class="mt-3">Dalim Karma</h4>
+                    <p class="text-secondary">(Business Agent)</p>
+                </div>
+                <div class="col-md-3 text-center">
+                    <div class="main">
+                        <div class="card agent4"></div>
+                    </div>
+                    <h4 class="mt-3">Halim Yoka</h4>
+                    <p class="text-secondary">(Business Agent)</p>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid mt-5 p-0">
+            <div class="row mid2-img trsans1">
+                <div class="col-md-6 text-white trans">
+                    <h1 class="my-5 py-4 pl-3">Add your Propery for Sale (For Seller only)</h1>
+                </div>
+                <div class="col-md-3 text-white text-center trans">
+                    <h5 class="my-5 py-5">+10 637 367 4567</h5>
+                </div>
+                <div class="col-md-3 text-white text-center trans pt-5">
+                    <a href="{% url 'add_property_view' %}"><button class="btn btn-outline-light rounded-pill my-5"
+                    {% if data %}
+                    {% if data.user.is_staff %}
+                    {% else %}
+                    disabled
+                    {% endif %}
+                    {% else %}    
+                        disabled
+                    {% endif %}
+                    >Add Property</button></a>
+                </div>
+            </div>
+        </div>
+</section>
+{% if status %}
+<script>
+    alert("{{status}}")
+</script>
+{% endif %}
+{% endblock %}

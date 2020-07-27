@@ -1,0 +1,181 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block head %}
+<style>
+     .bg-img{background: url("{% static 'images/lobby.jpeg'%}");  height: 500px; background-size: 100% 100%;}
+     .trans{
+            background: rgba(10, 8, 69,0.5);
+        }
+     .img1{background: url("{% static 'images/employee.jpeg'%}");  height: 500px; width:100%; background-size: 100% 100%;}
+     .agent1{
+            background: url("{% static 'images/agent1.jpg'%}"); height: 300px; background-size: cover;
+        }
+        .agent2{
+            background: url("{% static 'images/agent2.jpg'%}"); height: 300px; background-size: cover;
+        }
+        .agent3{
+            background: url("{% static 'images/agent3.png'%}"); height: 300px; background-size: cover;
+        }
+        .agent4{
+            background: url("{% static 'images/agent4.jpg'%}"); height: 300px; background-size: cover;
+        }
+        .agent1:hover{
+            transform: scale(1.1); transition: 1s;
+        }
+        .agent2:hover{
+            transform: scale(1.1); transition: 1s;
+        }
+        .agent3:hover{
+            transform: scale(1.1); transition: 1s;
+        }
+        .agent4:hover{
+            transform: scale(1.1); transition: 1s;
+        }
+        .mid2-img{
+            background: url("{% static 'images/header.jpeg'%}");  background-size: cover;
+        }
+
+</style>
+{% endblock %}
+
+{% block myblock %}
+    <div class="container-fluid">
+        <div class="row bg-img">
+            <div class="col-md-12 text-center text-white trans">
+          <h1 class="" style="margin-top:300px;">About US</h1>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mt-5">
+                <div class="img1 rounded">
+
+                </div>
+            </div>
+
+            <div class="col-md-6 p-5 mt-5">
+                <h1 style="margin-top: 100px;">Our Mission</h1>
+                <p class="text-secondary" style="font-family: Arial;">While there are countless Trips out there in charity shops and car boot sales, you can also buy refurbished examples,
+                     with today replacement leatherette available in all colors.
+                     I love my Trip and use it regularly something so refreshing about its simplicity.</p>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-4 text-center">
+                <h1 style="color: orange;">200 +</h1>
+                <p style="font-family: Arial;">Properties for sale</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <h1 style="color: orange;">300</h1>
+                <p style="font-family: Arial;">Properties for sale</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <h1 style="color: orange;">15</h1>
+                <p style="font-family: Arial;">Properties for sale</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row mt-5" style="background-image:url('{% static "images/laptop1.jpeg"%}'); background-size: 100% 100%;">
+            <div class="col-md-12 p-5">
+                <div class="carousel slide" data-ride="carousel" id="mycar">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="col-md-12 px-0 text-center" style="margin-bottom: 100px;">
+                                <h1 class="text-white" style="margin-top: 30px; margin-bottom: 30px; font-size: 60px;"><i class="fas fa-quote-right"></i></h1>
+                                <p class="text-light mr-5 ml-5" style="font-size: 20px;">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                                Enim quis atque ut quaerat dolore impedit, sapiente at modi eaque porro recusandae,
+                                natus omnis iste?Lorem ipsum dolor sit amet.natus omnis iste?Lorem ipsum dolor sit amet.</p>
+                                <img src="{% static 'images/carousel.jpg' %}" height="50px" width="50px" style="border-radius: 50%;" alt="">  
+                                <h5 class="text-light mt-3">Robert Thomson</h5>
+                                <p class="text-white">Business Owner</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="col-md-12 px-0 text-center" style="margin-bottom: 100px;">
+                                <h1 class="text-white" style="margin-top: 30px; margin-bottom: 30px; font-size: 60px;"><i class="fas fa-quote-right"></i></h1>
+                                <p class="text-light mr-5 ml-5" style="font-size: 20px;">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                                Enim quis atque ut quaerat dolore impedit, sapiente at modi eaque porro recusandae,
+                                natus omnis iste?Lorem ipsum dolor sit amet.natus omnis iste?Lorem ipsum dolor sit amet.</p>
+                                <img src="{% static 'images/carousel.jpg' %}" height="50px" width="50px" style="border-radius: 50%;" alt="">  
+                                <h5 class="text-light mt-3">Robert Thomson</h5>
+                                <p class="text-white">Business Owner</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="col-md-12 px-0 text-center" style="margin-bottom: 100px;">
+                                <h1 class="text-white" style="margin-top: 30px; margin-bottom: 30px; font-size: 60px;"><i class="fas fa-quote-right"></i></h1>
+                                <p class="text-light mr-5 ml-5" style="font-size: 20px;">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                                Enim quis atque ut quaerat dolore impedit, sapiente at modi eaque porro recusandae,
+                                natus omnis iste?Lorem ipsum dolor sit amet.natus omnis iste?Lorem ipsum dolor sit amet.</p>
+                                <img src="{% static 'images/carousel.jpg' %}" height="50px" width="50px" style="border-radius: 50%;" alt="ImageNot found">  
+                                <h5 class="text-light mt-3">Robert Thomson</h5>
+                                <p class="text-white">Business Owner</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#mycar" class="carousel-control-prev" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a href="#mycar" class="carousel-control-next" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1 class="my-5 pb-4">Our Agents</h1>
+            </div>
+            <div class="col-md-3 text-center">
+                <div class="main">
+                <div class="card agent1"></div>
+                </div>
+                <h4 class="mt-3">Milani Mou</h4>
+                <p class="text-secondary">(Business Agent)</p>    
+            </div>
+            <div class="col-md-3 text-center">
+                <div class="main">
+                <div class="card agent2"></div>
+                </div>
+                <h4 class="mt-3">Lorem Ipsum</h4>
+                <p class="text-secondary">(Business Agent)</p>
+            </div>
+            <div class="col-md-3 text-center">
+                <div class="main">
+                <div class="card agent3"></div>
+                </div>
+                <h4 class="mt-3">Dalim Karma</h4>
+                <p class="text-secondary">(Business Agent)</p>
+            </div>
+            <div class="col-md-3 text-center">
+                <div class="main">
+                <div class="card agent4"></div>
+                </div>
+                <h4 class="mt-3">Halim Yoka</h4>
+                <p class="text-secondary">(Business Agent)</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row mid2-img">
+            <div class="col-md-6 text-white trans">
+                <h1 class="pl-3 my-5 py-4">Add your Propery for Sale</h1>
+            </div>
+            <div class="col-md-3 text-white text-center trans">
+                <h5 class="my-5 py-5">+10 637 367 4567</h5>
+            </div>
+            <div class="col-md-3 text-white text-center trans pt-5">
+                <button class="btn btn-outline-light rounded-pill my-5">Add Property</button>
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}

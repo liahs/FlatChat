@@ -1,0 +1,256 @@
+{% extends "dashboard_base.html" %}
+{% load static %}
+{% block head %}
+    <style>
+        label{color:black;}
+        form .row{
+            margin-top: 2%;
+        }
+    </style>
+{% endblock %}
+{% block dashboard %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 mx-auto mt-5 py-5 text-center">
+                <div class="card">
+                    <div class="card-header">
+                        <h1>Dashboard &gt; Edit Property</h1>
+                    </div>
+                    <div class="card-body">
+                        <form action="" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="text-center">
+                                    <img src="/media/{{property.property_images}}" style="height: 200px; width: 40%;" alt="">
+                                    </div>
+                                    <label for="" class="mt-2">Upadte Image</label>
+                                    <input type="file" name="pimg" class="form-control" id="">
+
+                                    <!-- <label for="" class="mt-2">Image 2</label>
+                                    <input type="file" name="pimg2" class="form-control" id=""> -->
+
+                                    <label for="" class="mt-2">Image 3</label>
+                                    <input type="file" name="pimg3" class="form-control" id="">
+
+                                    <label for="" class="mt-2">Image 4</label>
+                                    <input type="file" name="pimg4" class="form-control" id="">
+                                 </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Property Name</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" name="pname" value="{{property.property_name}}">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Property category</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <select class="form-control" name="pcat" id="">
+                                        {% for i in category %}
+                                            {% if i.id == property.property_category.id %}
+                                            <option value="{{i.id}}" selected>{{i.cat_name}}</option>
+                                            {% else %}
+                                            <option value="{{i.id}}">{{i.cat_name}}</option>
+                                           {% endif %}
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Property Price</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="number" class="form-control" name="pp" value="{{property.property_price}}">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Sale Price</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="number" class="form-control" name="sp" value="{{property.sale_price}}">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Booking Amount</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="number" class="form-control" name="bamt" value="{{property.booking_amount}}">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">City</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" name="city" value="{{property.city}}">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Property Status</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" name="pstatus" value="{{property.property_status}}">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Area</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="number" class="form-control" name="parea" value="{{property.area}}">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Number Of Bathrooms</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="number" class="form-control" name="bath" value="{{property.no_of_bathroom}}">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Number Of Bedrooms</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="number" class="form-control" name="pbed" value="{{property.no_of_bedroom}}">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Air conditioning</label>
+                                </div>
+                                <div class="col-md-6">
+                                   <select class="form-control" name="air" id="">
+                                    {% if property.is_air_conditioning == "True" %}
+                                       <option value="yes" selected>Yes</option>
+                                       <option value="no">No</option>
+                                    {% else %}
+                                       <option value="yes">Yes</option>
+                                       <option value="no" selected>No</option>
+                                    {% endif %}
+                                   </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">gym</label>
+                                </div>
+                                <div class="col-md-6">
+                                   <select class="form-control" name="gym" id="">
+                                    {% if property.is_gym == "True" %}
+                                       <option value="yes" selected>Yes</option>
+                                       <option value="no">No</option>
+                                    {% else %}
+                                       <option value="yes">Yes</option>
+                                       <option value="no" selected>No</option>
+                                    {% endif %}
+                                   </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Laundary</label>
+                                </div>
+                                <div class="col-md-6">
+                                   <select class="form-control" name="lau" id="">
+                                    {% if property.is_laundry_room == "True" %}
+                                       <option value="yes" selected>Yes</option>
+                                       <option value="no">No</option>
+                                    {% else %}
+                                       <option value="yes">Yes</option>
+                                       <option value="no" selected>No</option>
+                                    {% endif %}
+                                   </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">TV Cable</label>
+                                </div>
+                                <div class="col-md-6">
+                                   <select class="form-control" name="tv" id="">
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                   </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Wifi</label>
+                                </div>
+                                <div class="col-md-6">
+                                   <select class="form-control" name="wifi" id="">
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                   </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Parking</label>
+                                </div>
+                                <div class="col-md-6">
+                                   <select class="form-control" name="parking" id="">
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                   </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Swimmimg Pool</label>
+                                </div>
+                                <div class="col-md-6">
+                                   <select class="form-control" name="pool" id="">
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                   </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Balconies</label>
+                                </div>
+                                <div class="col-md-6">
+                                   <input type="number" class="form-control" name="bal" id="" value="{{property.Balconies}}">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Details</label>
+                                </div>
+                                <div class="col-md-6">
+                                   <textarea name="des" class="form-control" id="" rows="5">{{property.details}}</textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+
+                                </div>
+                                <div class="col-md-6">
+                                <input type="submit" class="btn btn-warning btn-block" value="SAVE CHANGES" name="" id="">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if status %}
+        <script>
+            alert("{{status}}");
+            window.location = "/update_property?pid={{id}}";
+        </script>
+    {% endif %}
+{% endblock %}

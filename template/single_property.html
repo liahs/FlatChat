@@ -1,0 +1,194 @@
+{% extends "header.html" %}
+{% load static %}
+{% block head %}
+    <style>
+        td,th{
+            width: 30%;
+        }
+    </style>
+{% endblock %}
+{% block myblock %}
+    <div class="container-fluid" style="margin-top: 70px; background: url('/static/images/c3.JPEG'); background-size: 100% 100%;">
+        <div class="row py-5" style="background: rgba(0,0,0,0.5);">
+            <div class="col-md-12 py-5 my-5 text-white text-center font-weight-bold text-uppercase">
+                <h1>Property Details</h1>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row py-4">
+            <div class="col-md-8">
+                <div class=" text-center">
+                <img src="/media/{{property.property_images}}" alt="No Image" style="height: 300px; width: 80%;">
+            </div>
+               <table class="table table-striped table-bordered table-hover">
+                   <tbody>
+                       <tr>
+                           <th>PROPERTY ID</th>
+                           <td>{{property.id}}</td>
+                       </tr>
+                       <tr>
+                        <th>PROPERTY Name</th>
+                        <td>{{property.property_name}}</td>
+                    </tr>
+                    <tr>
+                        <th>Market Price</th>
+                        <td><del>&#8377; {{property.property_price}}</del></td>
+                    </tr>
+                    <tr>
+                        <th>Offered Price</th>
+                        <td>&#8377; {{property.sale_price}}
+                            <script>
+                                let t = "{{property.property_price}}";
+                                let s = "{{property.sale_price}}";
+                                let dis = 100-((s/t)*100);
+                                document.write("<strong class='text-danger'>("+Math.round(dis,2)+"%)</strong>");
+                            </script>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Booking Amount</th>
+                        <td>&#8377; {{property.booking_amount}}</td>
+                    </tr>
+                    <tr>
+                        <th>City</th>
+                        <td>{{property.city}}</td>
+                    </tr>
+                    <tr>
+                        <th>Property Status</th>
+                        <td>{{property.property_status}}</td>
+                    </tr>
+                    <tr>
+                        <th>Property Area</th>
+                        <td>{{property.area}}</td>
+                    </tr>
+                    <tr>
+                        <th>Bathrooms</th>
+                        <td>{{property.no_of_bathroom}}</td>
+                    </tr>
+                    <tr>
+                        <th>Bedrooms</th>
+                        <td>{{property.no_of_bedroom}}</td>
+                    </tr>
+                    <tr>
+                        <th>Aircondition</th>
+                        {% if property.is_air_conditioning %}
+                            <td class="alert alert-success"><i class="fas fa-check-square text-success"></i></td>
+                        {% else %}
+                            <td class="alert alert-danger"><i class="fas fa-times-circle text-danger"></i></td>
+                        {% endif  %}
+                    </tr>
+                    <tr>
+                        <th>gym</th>
+                        {% if property.is_gym %}
+                            <td class="alert alert-success"><i class="fas fa-check-square text-success"></i></td>
+                        {% else %}
+                            <td class="alert alert-danger"><i class="fas fa-times-circle text-danger"></i></td>
+                        {% endif  %}
+                    </tr>
+                    <tr>
+                        <th>Laundary</th>
+                        {% if property.is_laundry_room %}
+                            <td class="alert alert-success"><i class="fas fa-check-square text-success"></i></td>
+                        {% else %}
+                            <td class="alert alert-danger"><i class="fas fa-times-circle text-danger"></i></td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <th>TV Cable</th>
+                        {% if property.is_tv_cable %}
+                             <td class="alert alert-success"><i class="fas fa-check-square text-success"></i></td>
+                        {% else %}
+                            <td class="alert alert-danger"><i class="fas fa-times-circle text-danger"></i></td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <th>Wifi</th>
+                        {% if property.is_wifi %}
+                        <td class="alert alert-success"><i class="fas fa-check-square text-success"></i></td>
+                        {% else %}
+                        <td class="alert alert-danger"><i class="fas fa-times-circle text-danger"></i></td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <th>Parking</th>
+                        {% if property.is_parking %}
+                        <td class="alert alert-success"><i class="fas fa-check-square text-success"></i></td>
+                        {% else %}
+                        <td class="alert alert-danger"><i class="fas fa-times-circle text-danger"></i></td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <th>Swimming Pool</th>
+                        {% if property.is_swimming_pool %}
+                        <td class="alert alert-success"><i class="fas fa-check-square text-success"></i></td>
+                        {% else %}
+                        <td class="alert alert-danger"><i class="fas fa-times-circle text-danger"></i></td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <th>Balconies</th>
+                        <td>{{property.Balconies}}</td>
+                    </tr>
+                    <tr>
+                        <th>Property Details</th>
+                        <td>{{property.details}}</td>
+                    </tr>
+                    <tr>
+                        <th>Owner Details</th>
+                        <td><a href="" class="btn btn-success"> Click Here</a></td>
+                    </tr>
+                   </tbody>
+               </table>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Seller Detail</h4>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped table-bordered table-hover">
+                            <tr>
+                                <th>First Name</th>
+                                <td>{{property.seller.first_name}}</td>
+                            </tr>
+                            <tr>
+                                <th>Last Name</th>
+                                <td>{{property.seller.last_name}}</td>
+                            </tr>
+                            <tr>
+                                <th>Last Name</th>
+                                <td>{{property.seller.email}}</td>
+                            </tr>
+                            <tr>
+                                <th>Joined Since</th>
+                                <td>{{property.seller.date_joined}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+               <h2 class="alert alert-secondary">Category Details</h2>
+               <table class="table table-striped table-bordered table-hover">
+                    <tr>
+                        <th>Category ID</th>
+                        <td>{{property.property_category.id}}</td>
+                    </tr>
+                    <tr>
+                        <th>Category Name</th>
+                        <td>{{property.property_category.cat_name}}</td>
+                    </tr>
+                    <tr>
+                        <th>Category image</th>
+                        <td>
+                            <img src="/media/{{property.property_category.cover_pic}}" style="width: 200px; height: 150px;" alt="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Category Description</th>
+                        <td>{{property.property_category.description}}</td>
+                    </tr>
+               </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

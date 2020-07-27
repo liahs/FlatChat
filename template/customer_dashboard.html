@@ -1,0 +1,63 @@
+{% extends "dashboard_base.html" %}
+{% load static %}
+{% block head %}
+<style>
+    .bg-img{
+            background: url("{% static 'images/img7.JPEG'%}"); height: 100%; background-size: cover;
+        }
+        .bg{
+            background: rgba(0,0,0,0.5);
+        }
+</style>
+{% endblock %}
+{% block dashboard %}
+<div class="container-fluid bg-img px-0">
+    <div class="bg">
+    <div class="row">
+        <div class="col-md-12 text-center text-white mb-2" style="margin-top: 100px;">
+            {% if user.is_staff %}
+            <h1>Welcome to seller's dashboard</h1>
+            {% else %}
+            <h1>Welcome to customer's dashboard</h1>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row py-5 px-0">
+        <div class="col-md-6 mx-auto py-4">
+            <div class="card bg-transparent border">
+                <div class="card-header text-center text-white">
+                    <h1>My Details</h1>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered text-white">
+                        <tbody>
+                            <tr>
+                                <th>User Id</th>
+                                <td>{{user.id}}</td>
+                            </tr>
+                            <tr>
+                                <th>User Name</th>
+                                <td>{{user.username}}</td>
+                            </tr>
+                            <tr>
+                                <th>Full Name</th>
+                                <td>{{user.first_name}}  {{user.last_name}}</td>
+                            </tr>
+                            <tr>
+                                <th>Last Login</th>
+                                <td>{{user.last_login}}</td>
+                            </tr>
+                            <tr>
+                                <th>Join Date</th>
+                                <td>{{user.date_joined}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

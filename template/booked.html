@@ -1,0 +1,32 @@
+{% extends 'dashboard_base.html'%}
+{% block head %}
+<style>
+.t{
+    margin-top: 70px;
+}
+
+</style>
+
+{% endblock %}
+{% block dashboard %}
+<div class="container text-center t ">
+    <div class="row">
+        <div class="col-md-10 mx-auto my-2">
+                <table class="table">
+                        <tr>
+                            <th>seller</th>
+                            <th>property</th>
+                            <th>Booking price</th>
+                        </tr>
+                        <tr>
+                            <td>{{b.prop.seller}}</td>
+                            <td>{{b.prop.property_name}}</td>
+                            <td>Rs {{b.prop.booking_amount}} /-</td>
+                        </tr>
+                        </table>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

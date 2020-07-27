@@ -1,0 +1,81 @@
+{% extends "dashboard_base.html" %}
+{% block head %}
+<style>
+    #icon1,#icon2,#icon3{display: inline-block;}
+</style>
+{% endblock %}
+{% block dashboard %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 " style="margin-top: 100px;">
+                <h2 class="alert alert-primary text-center">Dashboard &gt; My Properties ({{property|length}})</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Property ID</th>
+                            <th>Property Image</th>
+                            <th>Property Name</th>
+                            <th>Seller Name</th>
+                            <th>Property Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for p in property %}
+                            <tr>
+                                <td>{{p.id}}</td>
+                                <td><img src="/media/{{p.property_images}}" style="height: 50px; width: 80px;" alt=""></td>
+                                <td>{{p.property_name}}</td>
+                                <td>{{p.seller.first_name}}  {{p.seller.last_name}}</td>
+                                <td>
+                                    <button class="btn btn-success" data-toggle="modal" data-target="#m{{p.id}}"><i class="fa fa-eye"></i>View</button>
+                                    <a href="{% url 'update_property' %}?pid={{p.id}}" class="btn btn-primary"><i class="fa fa-edit"></i>Edit</a>
+                                    <a href="{% url 'delete_property' %}?pid={{p.id}}" class="btn btn-danger"><i class="fa fa-trash"></i>Delete</a>
+
+                                </td>
+                            </tr>
+                            <div class="modal fade overflow-auto" id="m{{p.id}}">
+                                <div class="modal-dialog modal-md">
+                                    <div class="modal-content">
+                                    <div class="modal-header text-center">
+                                        <h2>
+                                           <a class="text-dark" href="{% url 'property_detail' %}?pid={{p.id}}"> {{p.property_name}}</a>
+                                        </h2>
+                                        <button class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <img src="/media/{{p.property_images}}" height="200px" width="100%" alt="">
+                                        <h3>{{p.property_category.cat_name}}</h3>
+                                        <p style="font-size: 30px;">
+                                            <del>&#8377; {{p.property_price}}</del>
+                                            <strong class="bg-warning">&#8377;{{p.sale_price}}</strong>
+                                        </p>
+                                        <ul type="none" >
+                                            <li  id="icon1">
+                                                <i class="fas fa-cube mt-5 icon"></i>
+                                               <p class="mt-2">{{p.area}} sqft</p>
+                                           </li>
+                                           <li id="icon2">
+                                           
+                                               <i class="fas fa-bed ml-3 mt-5 pl-5 icon"></i>
+                                              <p class="ml-3 pl-5 mt-2">{{p.no_of_bedroom}} beds</p>
+                                          </li>
+                                          <li id="icon3">
+                                           <i class="fas fa-bath ml-3 mt-5 pl-5 icon"></i>
+                                          <p class="ml-3 pl-5 mt-2">{{p.no_of_bathroom}} bath</p>
+                                      </li>
+                                          </ul>
+                                        <p>{{p.details}}</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="{% url 'property_detail' %}?pid={{p.id}}" class="btn btn-success">View Details</a>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

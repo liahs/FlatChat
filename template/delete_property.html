@@ -1,0 +1,34 @@
+{% extends "dashboard_base.html" %}
+{% load static %}
+{% block head %}
+<style>
+    #icon1,#icon2,#icon3{display: inline-block;}
+    .bg{background: url("{% static 'images/lobby.JPEG'%}");  height: 500px; background-size: 100% 100%;}
+    .rg{background: rgba(0,0,0,0.5);}
+</style>
+{% endblock %}
+{% block dashboard %}
+    <div class="container-fluid bg">
+        <div class="row rg">
+            <div class="col-md-6 mx-auto p-4" style="margin-top: 100px;">
+                <div class="card shadow shadow-lg">
+                    <div class="card-body">
+                        <h4 class="text-danger">Are Your Sure You Want To Delete</h4>
+                        <img src="/media/{{property.property_images}}" height="200" width="100%" alt="">
+                        <h4>{{property.property_name}}</h4>
+                        <div class="mt-4">
+                            <a href="{% url 'delete_property' %}?pid={{property.id}}&&action=confirm" class="btn btn-danger">Confirm Delete</a>
+                            <a href="{% url 'my_property' %}" class="btn btn-warning">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% if status %}
+ <script>
+     alert("{{status}}");
+     window.location = "/my_property/"
+ </script>
+{% endif %}
+{% endblock %}

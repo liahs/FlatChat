@@ -1,0 +1,34 @@
+{% extends "dashboard_base.html" %}
+{% load static %}
+{% load bootstrap4 %}
+{% block head %}
+<style>
+    label{color:white; font-weight: bold;}
+    .bg{
+        background: url("{% static 'images/building.JPEG'%}"); height: 100%; background-size: cover;
+    }
+    .up{
+        background: rgba(0,0,0,0.5);
+    }
+</style>
+{% endblock %}
+{% block dashboard %}
+    <div class="container-fluid bg">
+        <div class="row up">
+            <div class="col-md-6 mx-auto bg-transparent" style="margin-top: 100px;">
+                <h1 class="text-center text-white">Add Property</h1>
+                <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                     <input type="submit" class="btn btn-success" value="Add Property" name="" id="">
+                </form>
+            </div>
+        </div>
+    </div>
+{% if status %}
+    <script>
+        alert("{{status}}");
+        window.location = "/my_property/"
+    </script>
+{% endif %}
+{% endblock %}
